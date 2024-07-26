@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const Movie = require('../models/movies.model');
+const Movie = require('../model/movies.model');
 
 
 // GET: Retrieve all movies stored in the Mongo DB
@@ -12,8 +12,19 @@ router.get('/', async (req, res) => {
       res.status(400).json({ error: 'Error: ' + error.message });
     }
   });
+
+// GET: Retrieve movie by ID
+router.get('/:id', async (req, res) => {
+    try {
+      const { id } = req.params;
+      const movie = await Movie.findById(id);
+      res.json(movie);
+    } catch (error) {
+      res.status(400).json({ error: 'Error: ' + error.message });
+    }
+  });
   
-// POST: Add a new exercise
+// POST: Add a new movie
 router.post('/', async (req, res) => {
   console.log(req.body)
   try {
@@ -33,3 +44,5 @@ router.post('/', async (req, res) => {
     res.status(400).json({ error: 'Error: ' + error.message });
   }
 });
+
+module.exports = router;

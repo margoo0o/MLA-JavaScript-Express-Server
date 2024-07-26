@@ -6,7 +6,7 @@ services:
       environment:
         - NODE_ENV=development
       ports:
-        - "5300:5300"
+        - "3001:3001"
       depends_on:
         - mongodb
       networks:
@@ -17,7 +17,7 @@ services:
         - MONGO_INITDB_ROOT_USERNAME=root
         - MONGO_INITDB_ROOT_PASSWORD=cfgmla23
       ports:
-        - "27018:27017"
+        - "27017:27017"
       volumes:
         - mongodbdata:/data/db
       networks:
