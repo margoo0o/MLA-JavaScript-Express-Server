@@ -1,0 +1,31 @@
+version: '1.0'
+services:
+  apis-in-js:
+      build:
+        dockerfile: Dockerfile
+      environment:
+        - NODE_ENV=development
+      ports:
+        - "5300:5300"
+      depends_on:
+        - mongodb
+      networks:
+        - app-network
+  mongodb:
+      image: mongo:latest
+      environment:
+        - MONGO_INITDB_ROOT_USERNAME=root
+        - MONGO_INITDB_ROOT_PASSWORD=cfgmla23
+      ports:
+        - "27018:27017"
+      volumes:
+        - mongodbdata:/data/db
+      networks:
+        - app-network
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  mongodbdata:
