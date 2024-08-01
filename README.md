@@ -2,7 +2,7 @@
 
 ## Running Locally
 
-**Note:** A mongoDB container runs on port 27018 to prevent conflicts with the MLA mongoDB instance.
+**Note:** A mongoDB container runs on port 27017. You may need to update the port, or stop any existing MongoDB containers.
 
 ```
 npm install
